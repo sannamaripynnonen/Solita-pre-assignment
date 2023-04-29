@@ -8,4 +8,11 @@ const listStations = async ({ render }) => {
     render('stations.eta', data);
 };
 
-export { listStations }
+const showStation = async ({ render, params }) => {
+    const data = {
+        details: await stationService.getDetailsById(params.id),
+    }
+    render('station.eta', data);
+}
+
+export { listStations, showStation }

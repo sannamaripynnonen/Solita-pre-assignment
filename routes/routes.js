@@ -8,6 +8,7 @@ const router = new Router();
 router.get('/', mainController.showMain);
 router.get('/journeys', journeyController.listJourneys);
 router.get('/stations', stationController.listStations);
+router.get('/station/:id', stationController.showStation)
 
 export { router };
 

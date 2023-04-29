@@ -1,0 +1,7 @@
+<h1> <%= it.details.station_namefi %></h1>
+<ul>
+    <li>Station address: <%= it.details.osoite %></li>
+    <li>Number of journeys from station: <%= it.details.dept_trips %></li>
+    <li>Number of journeys to station: <%= it.details.return_trips %></li>
+</ul>
+<a href='/stations'>Back to stations</a>

@@ -3,14 +3,14 @@
 <h2> Stations in Espoo</h2>
 <ul>
 <% it.stationsEspoo.forEach((station) => { %>
-    <li><%= station.station_namefi %></li>
+    <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
 <% }) %>
 </ul>
 
 <h2> Stations in Helsinki</h2>
 <ul>
 <% it.stationsHelsinki.forEach((station) => { %>
-    <li><%= station.station_namefi %></li>
+    <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
 <% }) %>
 </ul>
 
