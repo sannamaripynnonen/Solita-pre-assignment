@@ -8,3 +8,34 @@ services:
       - ./:/app
     ports:
       - 7777:7777
+    depends_on:
+      - "database"
+    environment:
+    - PGPORT=5432
+    - PGDATABASE=database
+    - PGUSER=username
+    - PGPASSWORD=password
+    - PGHOST=database-citybike
+  
+  database:
+    container_name: "database-citybike"
+    image: "postgres:13.4"
+    restart: unless-stopped
+    environment:
+    - POSTGRES_USER=username
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_DB=database
+    volumes:
+      - ./data:/var/lib/postgresql
+
+  flyway:
+    image: flyway/flyway:7.3.0-alpine
+    environment:
+      - FLYWAY_USER=username
+      - FLYWAY_PASSWORD=password
+      - FLYWAY_URL=jdbc:postgresql://database-citybike:5432/database
+    depends_on:
+      - database
+    volumes:
+      - .:/flyway/sql
+    command: -connectRetries=60 -baselineOnMigrate=true migrate
