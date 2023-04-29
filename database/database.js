@@ -14,7 +14,7 @@ if (trips.length == 0) {
   await sql`\copy citybiketrips FROM '/var/lib/postgresql/2021-05.csv' DELIMITER ',' CSV HEADER;`;
   await sql`\copy citybiketrips FROM '/var/lib/postgresql/2021-06.csv' DELIMITER ',' CSV HEADER;`;
   await sql`\copy citybiketrips FROM '/var/lib/postgresql/2021-07.csv' DELIMITER ',' CSV HEADER;`;
-  await sql`DELETE FROM citybiketrips WHERE duration < 10 AND distance < 10;`;
+  await sql`DELETE FROM citybiketrips WHERE duration < 10 OR distance < 10;`;
 }
 
 

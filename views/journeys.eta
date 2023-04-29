@@ -1,0 +1,19 @@
+<h1>Journey list</h1>
+<table>
+    <tr>
+        <th>Departure station</th>
+        <th>Return station</th>
+        <th>Distance (km)</th>
+        <th>Duration (min)</th>
+    </tr>
+<% it.journeys.forEach((journey) => { %>
+    <tr>
+        <td><%= journey.dept_station %></td>
+        <td><%= journey.return_station %></td>
+        <td><%= journey.distance %> </td>
+        <td><%= journey.duration %> </td>
+    </tr>
+<% }); %>
+</table>
+
+<a href='/'>Main</a>
