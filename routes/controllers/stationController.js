@@ -12,6 +12,7 @@ const showStation = async ({ render, params }) => {
     const data = {
         details: await stationService.getDetailsById(params.id),
     }
+    console.log(data.details.top_return);
     render('station.eta', data);
 }
 
