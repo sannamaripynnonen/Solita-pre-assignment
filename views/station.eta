@@ -1,3 +1,5 @@
+<% layout("./layouts/layout.eta") %>
+
 <h1> <%= it.details.station_namefi %></h1>
 <ul>
     <li>Station address: <%= it.details.osoite %></li>

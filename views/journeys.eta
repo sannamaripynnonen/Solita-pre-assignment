@@ -1,3 +1,4 @@
+<% layout("./layouts/layout.eta") %>
 <h1>Journey list</h1>
 <table>
     <tr>

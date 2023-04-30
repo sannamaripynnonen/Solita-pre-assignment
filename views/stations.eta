@@ -1,17 +1,16 @@
+<% layout("./layouts/layout.eta") %>
 <h1>Station list</h1>
-
+<a href='/'>Main</a>
 <h2> Stations in Espoo</h2>
 <ul>
 <% it.stationsEspoo.forEach((station) => { %>
     <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
 <% }) %>
 </ul>
-
 <h2> Stations in Helsinki</h2>
 <ul>
 <% it.stationsHelsinki.forEach((station) => { %>
     <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
 <% }) %>
 </ul>
-
 <a href='/'>Main</a>
