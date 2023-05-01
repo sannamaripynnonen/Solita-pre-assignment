@@ -8,6 +8,10 @@ const getAllHelsinkiStations = async () => {
     return await sql`SELECT station_id, station_namefi FROM bikestations WHERE kaupunki <> 'Espoo' ORDER BY station_namefi`;
 };
 
+const getStation = async (station) => {
+    return await sql`SELECT station_id, station_namefi FROM bikestations WHERE station_namefi iLIKE '%' || ${station} || '%'`;
+};
+
 const getDetailsById = async (id) => {
     const rows = await sql`SELECT station_namefi, osoite FROM bikestations WHERE station_id = ${id}`;
     if (rows && rows.length > 0) {
@@ -28,4 +32,4 @@ const getDetailsById = async (id) => {
     }
 }
 
-export { getAllEspooStations, getAllHelsinkiStations, getDetailsById }
+export { getAllEspooStations, getAllHelsinkiStations, getStation, getDetailsById }

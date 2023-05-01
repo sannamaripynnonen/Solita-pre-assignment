@@ -1,21 +1,17 @@
 <% layout("./layouts/layout.eta") %>
 <h1>Stations</h1>
+<a href='/stations'>Back to all stations</a>
 <a href='/'>Back to main page</a>
 <br>
 <br>
-<form method="POST" action="/stations/search">
+<form method="POST" action="/stations">
 <input type="text" name="station" /><input type="submit" value="Search" />
 </form>
-<h2> Stations in Espoo</h2>
+<h2>Search results</h2>
 <ul>
-<% it.stationsEspoo.forEach((station) => { %>
+<% it.stations.forEach((station) => { %>
     <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
 <% }) %>
 </ul>
-<h2> Stations in Helsinki</h2>
-<ul>
-<% it.stationsHelsinki.forEach((station) => { %>
-    <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
-<% }) %>
-</ul>
+<a href='/stations'>Back to all stations</a>
 <a href='/'>Back to main page</a>

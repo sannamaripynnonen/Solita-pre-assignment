@@ -12,8 +12,18 @@ const showStation = async ({ render, params }) => {
     const data = {
         details: await stationService.getDetailsById(params.id),
     }
-    console.log(data.details.top_return);
     render('station.eta', data);
 }
 
-export { listStations, showStation }
+const searchStation = async ({ render, request }) => {
+    const body = request.body();
+    const params = await body.value;
+    const station = params.get('station');
+
+    const data = {
+        stations: await stationService.getStation(station),
+    }
+    render('searchedStation.eta', data);
+}
+
+export { listStations, showStation, searchStation }
