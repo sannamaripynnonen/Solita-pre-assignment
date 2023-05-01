@@ -1,5 +1,18 @@
 <% layout("./layouts/layout.eta") %>
-
-<h1>Helsinki City bike app</h1>
-<p>Welcome to Helsinki City bike app!</p>
-
+<br>
+<div class="container">
+    <img src="https://www.sttinfo.fi/data/images/public/4396/69969680/fceef292-a445-4c6f-9ec6-3ebe77d57160-w_960.jpg"
+        class="img-fluid" alt="City bike">
+</div>
+<br>
+<br>
+<div class="container">
+    <h1 class="text-justify">Helsinki City bike app</h1>
+    <p>Welcome to Helsinki City bike app!</p>
+    <p>Journeys shows 100 trips made with city bikes.
+    Trip information includes departure and return stations, distance and duration of the trip.</p>
+    <p>Stations lists all city bike stations in Helsinki and Espoo. Each station has its own info page
+    with details and statistics about the station.</p>
+    <p>Number of stations in Helsinki: <%= it.stationsHelsinki.length %> | Number of stations in Espoo: <%= it.stationsEspoo.length %> | Number of trips made 05-07/2021: <%= it.trips.count %>
+    </p>
+</div>

@@ -1,22 +1,24 @@
 <% layout("./layouts/layout.eta") %>
 
 <h1> <%= it.details.station_namefi %></h1>
-<ul>
-    <li>Station address: <%= it.details.osoite %></li>
-    <li>Number of journeys from station: <%= it.details.dept_trips %></li>
-    <li>Number of journeys to station: <%= it.details.return_trips %></li>
-    <li>Average distance of a journey starting from station: <%= it.details.dept_distance %> km</li>
-    <li>Average distance of a journey ending at station: <%= it.details.return_distance %> km</li>
-</ul>
-<p>Top 5 return stations for journeys starting from <%= it.details.station_namefi %></p>
-<ol>
-<% it.details.top_return.forEach((station) => { %>
-    <li><%= station.return_station %></li>
-<% }) %>
-</ol>
-<p>Top 5 departure stations for journeys ending at <%= it.details.station_namefi %></p>
-<ol>
-<% it.details.top_dept.forEach((station) => { %>
-    <li><%= station.dept_station %></li>
-<% }) %>
-</ol>
+<div class="container">
+    <ul>
+        <li>Station address: <%= it.details.osoite %></li>
+        <li>Number of journeys from station: <%= it.details.dept_trips %></li>
+        <li>Number of journeys to station: <%= it.details.return_trips %></li>
+        <li>Average distance of a journey starting from station: <%= it.details.dept_distance %> km</li>
+        <li>Average distance of a journey ending at station: <%= it.details.return_distance %> km</li>
+    </ul>
+    <p>Top 5 return stations for journeys starting from <%= it.details.station_namefi %></p>
+    <ol>
+    <% it.details.top_return.forEach((station) => { %>
+        <li><%= station.return_station %></li>
+    <% }) %>
+    </ol>
+    <p>Top 5 departure stations for journeys ending at <%= it.details.station_namefi %></p>
+    <ol>
+    <% it.details.top_dept.forEach((station) => { %>
+        <li><%= station.dept_station %></li>
+    <% }) %>
+    </ol>
+</div>

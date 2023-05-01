@@ -1,18 +1,29 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1>Stations</h1>
-<form method="POST" action="/stations/search">
-<input type="text" name="station" /><input type="submit" value="Search" />
-</form>
-<h2> Stations in Espoo</h2>
-<ul>
-<% it.stationsEspoo.forEach((station) => { %>
-    <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
-<% }) %>
-</ul>
-<h2> Stations in Helsinki</h2>
-<ul>
-<% it.stationsHelsinki.forEach((station) => { %>
-    <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
-<% }) %>
-</ul>
+<div class="container">
+    <h1>Stations</h1>
+    <form method="POST" action="/stations/search">
+        <input type="text" name="station" /><input type="submit" value="Search" />
+    </form>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2> Stations in Helsinki</h2>
+            <ul>
+            <% it.stationsHelsinki.forEach((station) => { %>
+                <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
+            <% }) %>
+            </ul>
+        </div>
+        <div class="col">
+            <h2> Stations in Espoo</h2>
+            <ul>
+            <% it.stationsEspoo.forEach((station) => { %>
+                <li><a href='/station/<%= station.station_id %>'><%= station.station_namefi %></a></li>
+            <% }) %>
+            </ul>
+        </div>
+    </div>
+</div>
