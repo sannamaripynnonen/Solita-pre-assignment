@@ -7,4 +7,15 @@ const listJourneys = async ({ render }) => {
     render('journeys.eta', data);
 }
 
-export { listJourneys }
+const searchJourney = async ({ render, request }) => {
+    const body = request.body();
+    const params = await body.value;
+    const station = params.get('station');
+
+    const data = {
+        journeys: await journeyService.getJourneysByStation(station),
+    }
+    render('searchedJourney.eta', data);
+}
+
+export { listJourneys, searchJourney }
