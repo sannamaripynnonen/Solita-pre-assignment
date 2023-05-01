@@ -1,9 +1,5 @@
 <% layout("./layouts/layout.eta") %>
+
 <h1>Helsinki City bike app</h1>
 <p>Welcome to Helsinki City bike app!</p>
-<p>
-<a href='/journeys'>Journeys</a>
-</p>
-<p>
-<a href='/stations'>Stations</a>
-</p>
+

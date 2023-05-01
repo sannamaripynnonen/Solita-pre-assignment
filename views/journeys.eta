@@ -1,5 +1,6 @@
 <% layout("./layouts/layout.eta") %>
-<h1>Journey list</h1>
+
+<h1>Journeys</h1>
 <table>
     <tr>
         <th>Departure station</th>
@@ -16,5 +17,3 @@
     </tr>
 <% }); %>
 </table>
-
-<a href='/'>Main</a>

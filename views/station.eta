@@ -20,5 +20,3 @@
     <li><%= station.dept_station %></li>
 <% }) %>
 </ol>
-
-<a href='/stations'>Back to stations</a>
