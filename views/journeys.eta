@@ -9,15 +9,15 @@
     <tr>
         <th>Departure station</th>
         <th>Return station</th>
-        <th>Distance (km)</th>
-        <th>Duration (min)</th>
+        <th>Distance</th>
+        <th>Duration</th>
     </tr>
 <% it.journeys.forEach((journey) => { %>
     <tr>
         <td><%= journey.dept_station %></td>
         <td><%= journey.return_station %></td>
-        <td><%= journey.distance %> </td>
-        <td><%= journey.duration %> </td>
+        <td><%= journey.distance %> km </td>
+        <td><%= journey.duration %> min </td>
     </tr>
 <% }); %>
 </table>

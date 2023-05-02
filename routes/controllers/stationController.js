@@ -23,7 +23,6 @@ const showStation = async ({ render, params }) => {
     const data = {
         details: await stationService.getDetailsById(params.id, month),
     }
-    console.log(data.details.top_dept)
     render('station.eta', data);
 }
 
