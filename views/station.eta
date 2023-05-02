@@ -2,8 +2,23 @@
 
 <h1> <%= it.details.station_namefi %></h1>
 <div class="container">
+Station address: <%= it.details.osoite %>
+<br>
+<br>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Select month
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="/station/<%= it.details.station_id %>/may-july">May - July</a></li>
+    <li><a class="dropdown-item" href="/station/<%= it.details.station_id %>/may">May</a></li>
+    <li><a class="dropdown-item" href="/station/<%= it.details.station_id %>/june">June</a></li>
+    <li><a class="dropdown-item" href="/station/<%= it.details.station_id %>/july">July</a></li>
+  </ul>
+</div>
+<br>
+</div>
     <ul>
-        <li>Station address: <%= it.details.osoite %></li>
         <li>Number of journeys from station: <%= it.details.dept_trips %></li>
         <li>Number of journeys to station: <%= it.details.return_trips %></li>
         <li>Average distance of a journey starting from station: <%= it.details.dept_distance %> km</li>

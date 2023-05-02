@@ -9,9 +9,21 @@ const listStations = async ({ render }) => {
 };
 
 const showStation = async ({ render, params }) => {
-    const data = {
-        details: await stationService.getDetailsById(params.id),
+    let month = ''
+    if (params.month == "may") {
+        month = '2021-05';
+    } else if (params.month == 'june') {
+        month = '2021-06';
+    } else if (params.month == 'july') {
+        month = '2021-07';
+    } else {
+        month = '2021-';
     }
+
+    const data = {
+        details: await stationService.getDetailsById(params.id, month),
+    }
+    console.log(data.details.top_dept)
     render('station.eta', data);
 }
 

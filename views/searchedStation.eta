@@ -5,6 +5,9 @@
     <form method="POST" action="/stations/search">
         <input type="text" name="station" /><input type="submit" value="Search" />
     </form>
+</div>
+<br>
+<div class="container">
     <h2>Search results</h2>
     <% if(it.stations.length > 0) { 
         it.stations.forEach((station) => { %>
