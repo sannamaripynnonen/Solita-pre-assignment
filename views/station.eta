@@ -1,7 +1,7 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1> <%= it.details.station_namefi %></h1>
 <div class="container">
+<h1> <%= it.details.station_namefi %></h1>
 Station address: <%= it.details.osoite %>
 <br>
 <br>

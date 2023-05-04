@@ -20,3 +20,12 @@ To compile amd run the project, Docker and Docker compose need to be installed.
 - PostgreSQL: The database used in this project is PostgreSQL. This was chosen because it was the database system that I am familiar with. 
 - Bootstrap: I chose Bootstrap for the frontend because it was quick and easy to use. It makes the pages look consistent and adds responsiveness. 
 - Docker: I chose to containerize the project so that running it would be easier with just one command.
+
+## Implemented features
+The project uses PostgreSQL database to store journey and station information. 
+ 
+Journeys shows 100 random bike trips made. Information for each journey includes departure and return stations, distance in km and duration in minutes. Journeys can also be searched by departure or return station. Search is not case sensitive and can be only a part of the station name, e.g. searching for "aalto" return search results for "Aalto-yliopisto (M), Korkeakouluaukio" and "Aalto-yliopisto (M), Tietotie".
+
+Stations lists all bike stations in Helsinki and Espoo. Stations are separated by city. There is also a search bar that works the same way as in Journeys. 
+ 
+Each station has the address for the station and statistics about the journeys. The statistics are filterable by month (may, june and july or all three months). Statistics include number of journeys to and from the station, average distance of journeys and top 5 departure and return stations for journeys ending or starting at the station.
