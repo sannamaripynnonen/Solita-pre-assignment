@@ -11,7 +11,7 @@ const getAllHelsinkiStations = async () => {
 const getStation = async (station) => {
     return await sql`SELECT station_id, station_namefi FROM bikestations WHERE station_namefi iLIKE '%' || ${station} || '%'`;
 };
-// top asemat kuukausittain
+
 const getDetailsById = async (id, month) => {
     const rows = await sql`SELECT station_id, station_namefi, osoite FROM bikestations WHERE station_id = ${id}`;
     const details = rows[0];

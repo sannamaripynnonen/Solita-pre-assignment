@@ -11,28 +11,49 @@ services:
     depends_on:
       - "database"
     environment:
-    - PGPORT=5432
-    - PGDATABASE=database
-    - PGUSER=username
-    - PGPASSWORD=password
-    - PGHOST=database-citybike
+      - PGPORT=5432
+      - PGDATABASE=database
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+      - PGHOST=database-citybike
   
   database:
     container_name: "database-citybike"
-    image: "postgres:13.4"
+    image: "postgres:14.1-alpine"
     restart: unless-stopped
     environment:
-    - POSTGRES_USER=username
-    - POSTGRES_PASSWORD=password
-    - POSTGRES_DB=database
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=database
     volumes:
       - ./data:/var/lib/postgresql
 
+  import_csv:
+    container_name: "postgres_helper"
+    image: "postgres:14.1-alpine"
+    command: 
+      - sh
+      - -c
+      - |
+        while ! pg_isready -d database -U postgres -h database -p 5432 -q -d database -U postgres -h database -p 5432 -q; do echo 'postgres still not up' ; sleep 10; done
+        if [ $(psql postgresql://postgres:postgres@database-citybike:5432/database -tAc "SELECT COUNT(*) FROM citybiketrips, bikestations") -eq 0 ]
+        then 
+          psql postgresql://postgres:postgres@database-citybike:5432/database -c "\copy citybiketrips FROM '/var/lib/postgresql/2021-05.csv' DELIMITER ',' CSV HEADER;"
+          psql postgresql://postgres:postgres@database-citybike:5432/database -c "\copy citybiketrips FROM '/var/lib/postgresql/2021-06.csv' DELIMITER ',' CSV HEADER;"
+          psql postgresql://postgres:postgres@database-citybike:5432/database -c "\copy citybiketrips FROM '/var/lib/postgresql/2021-07.csv' DELIMITER ',' CSV HEADER;"
+          psql postgresql://postgres:postgres@database-citybike:5432/database -c "DELETE FROM citybiketrips WHERE duration < 10 OR distance < 10;"
+          psql postgresql://postgres:postgres@database-citybike:5432/database -c "\copy bikestations FROM '/var/lib/postgresql/Helsingin_ja_Espoon_kaupunkipyoraasemat_avoin.csv' DELIMITER ',' CSV HEADER;"
+        fi
+    depends_on:
+      - database
+    volumes:
+      - ./data:/var/lib/postgresql
+    
   flyway:
     image: flyway/flyway:7.3.0-alpine
     environment:
-      - FLYWAY_USER=username
-      - FLYWAY_PASSWORD=password
+      - FLYWAY_USER=postgres
+      - FLYWAY_PASSWORD=postgres
       - FLYWAY_URL=jdbc:postgresql://database-citybike:5432/database
     depends_on:
       - database
