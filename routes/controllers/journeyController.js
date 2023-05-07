@@ -15,7 +15,7 @@ const searchJourney = async ({ render, request }) => {
     const data = {
         journeys: await journeyService.getJourneysByStation(station),
     }
-    render('searchedJourney.eta', data);
+    render('journeys.eta', data);
 }
 
 export { listJourneys, searchJourney }
