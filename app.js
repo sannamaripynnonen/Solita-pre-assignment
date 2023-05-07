@@ -9,4 +9,10 @@ app.use(errorMiddleware);
 app.use(renderMiddleware);
 app.use(router.routes())
 
+app.use (({ response }) => {
+    response.type = "text/html; charset=utf-8";
+    response.status = 404;
+    response.body = "<h1>404, Page not found!</h1>";
+})
+
 app.listen({ port: 7777 });
